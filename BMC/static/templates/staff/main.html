@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Meta -->
+      <title>BMC</title>
+      <link href="{% static 'images/fav.png'%}" rel="shortcut icon">
+      <link rel="stylesheet" href="{% static 'css/azia.css'%}">
+      <link rel="stylesheet" href="{% static 'lib/fontawesome-free/css/all.min.css'%}">
+      <!-- <link rel="stylesheet" href="{% static 'lib/ionicons/css/ionicons.min.css'%}"> -->
+      <link rel="stylesheet" href="{% static 'lib/typicons.font/typicons.css'%}">
+      <!-- <link rel="stylesheet" href="https://expert-themes.com/html/tecno/css/main.css"> -->
+      <link rel="stylesheet" href="{% static 'css/css2.css'%}">
+      <link rel="stylesheet" href="{% static 'css/intlTelInput.css'%}">
+      <!-- vendor css -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XH7F45Q3YF');
+</script>
+  </head>
+  <body class="az-body">
+    <!-- Page Content  -->
+    {% block content %}
+    {% endblock%}
+  <script src="{% static 'lib/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <!-- <script src="{% static 'lib/ionicons/ionicons.js'%}"></script> -->
+  <script src="{% static 'js/azia.js'%}"></script>
+
+<script src="{% static 'js/intlTelInput.js'%}"></script>
+<script>
+	   $("#mobile-number").intlTelInput({
+		 onlyCountries: ["us"]
+		});
+ </script>
+  <script>
+    $(function(){
+      'use strict'
+
+      // showing modal with effect
+      $('.modal-effect').on('click', function(e){
+        e.preventDefault();
+        var effect = $(this).attr('data-effect');
+        $('#modaldemo8').addClass(effect);
+      });
+
+      // hide modal with effect
+      $('#modaldemo8').on('hidden.bs.modal', function (e) {
+        $(this).removeClass (function (index, className) {
+            return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
+        });
+      });
+
+      // showing modal with effect
+      $('.modal-effect').on('click', function(e){
+        e.preventDefault();
+        var effect = $(this).attr('data-effect');
+        $('#modaldemo7').addClass(effect);
+      });
+
+      // hide modal with effect
+      $('#modaldemo7').on('hidden.bs.modal', function (e) {
+        $(this).removeClass (function (index, className) {
+            return (className.match (/(^|\s)effect-\S+/g) || []).join(' ');
+        });
+      });
+
+    });
+    /*
+    // hide inspect element in browser
+    document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        });
+    document.onkeydown = function(e) {
+    if(event.keyCode == 123) {
+       return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+       return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+       return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+       return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+       return false;
+    }
+  }*/
+  </script>
+  </body>
+</html>

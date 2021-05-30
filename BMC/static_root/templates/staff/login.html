@@ -1,0 +1,135 @@
+{% extends 'staff/main.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .input-group {
+        margin-bottom: 1.25em;
+        }
+        input[type="text"],
+        input[type="password"] {
+        -webkit-appearance: none;
+        border-radius: 1px;
+        box-sizing: border-box;
+        /* font-size: 1.25em; */
+        height: auto;
+        padding: .5em;
+
+        }
+        /* suppress IE >= 10 native functionality that can show password */
+        input[type="password"]::-ms-reveal {
+        display: none;
+        }
+        .btn {
+        margin-top: 1.75em;
+        }
+        .form-group {
+        position: relative;
+        width: 100%;
+        }
+        .toggle {
+        background: none;
+        border: none;
+        color: #113f66b5;
+        /*display: none;*/
+        /*font-size: .9em;*/
+        font-weight: 600;
+        /*padding: .5em;*/
+        position: absolute;
+        right: .75em;
+        top: 2.85em;
+        z-index: 9;
+        }
+        @media (min-width: 1600px) {
+            .az-signup-header{
+                width: 20%;
+            }
+            
+        }
+</style>
+<div class="az-signup-wrapper"  style="background-image: url(/static/images/bg.jpg); background-position: center;">
+<!--  <div class="az-column-signup-left">-->
+<!--    <div style="margin-right:200px">-->
+<!--		-->
+<!--		<h1 class="az-dashboard-title" style="font-size: 75px; color: #fff;" >Welcome Back!</h1>-->
+<!--		<h3 style="color: #fff;" >We are glad to see you again.</h3>-->
+
+<!--	  </div>-->
+<!--  </div>&lt;!&ndash; az-column-signup-left &ndash;&gt;-->
+  <div class="az-column-signup-left">
+      <h1 class="az-logo"></h1>
+
+      <div class="az-signup-header" style="background-color: #fff; padding: 16px; border: 1px solid #ddd; border-radius: 10px; ">
+
+          <h3 style="text-align: center;">Login</h3>
+          <hr>
+          <!-- <h4>It's free to signup and only takes a minute.</h4> -->
+
+          <form method="post" action="{% url 'login' %}" autocomplete="off">
+              {% csrf_token %}
+              <div class="form-group">
+                  <label>Email ID</label>
+                  <input type="text" class="form-control" placeholder="" name="username"  title="Enter Valid Email Address" maxlength="40" required autocomplete="off">
+              </div><!-- form-group -->
+              <div class="form-group">
+                <label for="txtPassword" class="required">Password</label>
+                <input style="background-color: #fff;" type="password" id="txtPassword" class="form-control" placeholder="" name="password" autocomplete="off" pattern=".{5,}" minlength="5" maxlength="16" alt="Password, Must be between 5-16 characters" required>
+                <button type="button" id="btnToggle" class="toggle"><i id="eyeIcon" class="fa fa-eye"></i></button>
+              </div>
+              <!-- <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" placeholder="" name="password">
+              </div> -->
+              <div class="d-flex justify-content-right" style="float: right; margin-top: -14px; margin-bottom: 14px; font-size: 12px;">
+                  <a href="#">Forgot password?</a>
+              </div>
+
+              <button class="btn btn-primary btn-block">LOGIN</button><br>
+              <div class="d-flex justify-content-center links">
+                  Don't have an account?<a href="#"> &nbsp; Register Now</a>
+              </div>
+              <!-- <div class="row row-xs">
+              <div class="col-sm-6"><button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button></div>
+              <div class="col-sm-6 mg-t-10 mg-sm-t-0"><button class="btn btn-primary btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button></div>
+              </div> -->
+          </form>
+
+      </div><!-- az-signup-header -->
+      {% if error %}
+      <div style="color:red;text-align:center; background: #fff; padding: 10px; border-radius: 5px; margin-top: 10px;">{{error}}</div>
+      {% endif %}
+      <div class="az-signup-footer">
+      <!-- <p>Already have an account? <a href="page-signin.html">Sign In</a></p> -->
+      </div><!-- az-signin-footer -->
+  </div><!-- az-column-signup -->
+</div><!-- az-signup-wrapper -->
+<script>
+	let passwordInput = document.getElementById('txtPassword'),
+    toggle = document.getElementById('btnToggle'),
+    icon =  document.getElementById('eyeIcon');
+
+	function togglePassword() {
+		if (passwordInput.type === 'password') {
+			passwordInput.type = 'text';
+			icon.classList.add("fa-eye-slash");
+			//toggle.innerHTML = 'hide';
+		} else {
+			passwordInput.type = 'password';
+			icon.classList.remove("fa-eye-slash");
+			//toggle.innerHTML = 'show';
+		}
+	}
+
+    function checkInput() {
+    //if (passwordInput.value === '') {
+    //toggle.style.display = 'none';
+    //toggle.innerHTML = 'show';
+    //  passwordInput.type = 'password';
+    //} else {
+    //  toggle.style.display = 'block';
+    //}
+    }
+
+    toggle.addEventListener('click', togglePassword, false);
+    passwordInput.addEventListener('keyup', checkInput, false);
+</script>
+{% endblock %}

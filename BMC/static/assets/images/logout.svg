@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <clipPath id="clip-logout">
+      <rect width="128" height="128"/>
+    </clipPath>
+  </defs>
+  <g id="logout" clip-path="url(#clip-logout)">
+    <g id="Group_513" data-name="Group 513" transform="translate(-119.666 -75)">
+      <g id="Group_511" data-name="Group 511" transform="translate(122.277 83.265)">
+        <g id="Group_461" data-name="Group 461" transform="translate(0)">
+          <path id="Path_683" data-name="Path 683" d="M90.322,33.174a4.277,4.277,0,0,0-2.4,8.21,52.611,52.611,0,1,1-29.616,0,4.277,4.277,0,0,0-2.4-8.21,61.164,61.164,0,1,0,34.422,0Z" transform="translate(-11.947 -33.001)" stroke="#fff" stroke-width="0.2"/>
+        </g>
+      </g>
+      <g id="Group_512" data-name="Group 512" transform="translate(179.167 75)">
+        <g id="Group_463" data-name="Group 463">
+          <path id="Path_684" data-name="Path 684" d="M243.21,0a4.278,4.278,0,0,0-4.277,4.277V44.642a4.277,4.277,0,0,0,8.555,0V4.277A4.277,4.277,0,0,0,243.21,0Z" transform="translate(-238.933)" stroke="#fff" stroke-width="0.2"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

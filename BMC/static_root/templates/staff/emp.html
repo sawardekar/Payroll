@@ -1,0 +1,230 @@
+{% extends 'staff/dash.html' %}
+{% block content %}
+{% load static %}
+{% load filter %}
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<style>
+    /* example of setting the width for multiselect */
+    #testSelect1_multiSelect {
+        width: 200px;
+    }
+tr.hide-table-padding td {
+padding: 0;
+}
+
+.expand-button {
+	position: relative;
+}
+
+.accordion-toggle .expand-button:after
+{
+  position: absolute;
+  left:.75rem;
+  top: 50%;
+  transform: translate(0, -50%);
+  content: '-';
+
+}
+.accordion-toggle.collapsed .expand-button:after
+{
+  content: '+';
+
+}
+.table td{
+    border-top: 0px solid #dee2e6;
+}
+
+/* Clearable text inputs */
+.clearable{
+  position: relative;
+  display: inline-block;
+}
+.clearable input[type=text]{
+  padding-right: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.clearable__clear{
+  display: none;
+  position: absolute;
+  right:0; top:0;
+  padding: 5px 8px;
+  font-style: normal;
+  font-size: 1.2em;
+  user-select: none;
+  cursor: pointer;
+}
+.clearable input::-ms-clear {  /* Remove IE default X */
+  display: none;
+}
+</style>
+    <!-- Content_right -->
+<div class="container_full bg_img_banner">
+    <!--main contents start-->
+    <main class="content_wrapper">
+        <!--page title end-->
+        <div class="page-heading">
+            <div class="container-fluid">
+                <div class="row d-flex align-items-center">
+                        <div class="col-md-12" style="text-align: center;">
+                            <h1 class="text-white mb-5">Welcome to BMC Section</h1>
+                            <p class="text-white">Here you can add new Employee.</p>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <div class="container-fluid">
+            <!-- state start-->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card card-shadow mb-4">
+                        <div class="card-header">
+                            <div class="card-title">
+
+                                <div class="float-right task-list-action">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#EmpCreate" >   <!-- CameraCreate onclick="AddCamera()" -->
+                                        <i class="fa fa-plus" aria-hidden="true"></i> &nbsp;Add Employee
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            Your have {{emp_count}} Employee <br><br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group mb-3">
+                                        <span class="clearable">
+                                            {% getempsearchname request as empsearch %}
+                                            <input type="text" class="form-control" oninput="SearchEmployee(this)" value="{{empsearch}}" placeholder="Enter Name"/>
+                                            <i class="clearable__clear">&times;</i>
+                                        </span>
+                                        <div class="input-group-append">
+                                            <a type="button" class="btn btn-light" id="search_emp" href="#">Search</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+
+                                </div>
+                                <div class="col-md-3">
+                                    {% if emp_data.has_other_pages %}
+                                        <ul class="pagination" style="float: right;">
+                                            {% if emp_data.has_previous %}
+                                                <li><a href="?camera_page={{ emp_data.previous_page_number }}">&laquo;</a></li>
+                                            {% else %}
+                                                <li class="disabled"><span>&laquo;</span></li>
+                                            {% endif %}
+                                            {% for i in emp_data.paginator.page_range %}
+                                                {% if emp_data.number == i %}
+                                                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                                {% else %}
+                                                    <li><a href="?camera_page={{ i }}">{{ i }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if emp_data.has_next %}
+                                                <li><a href="?camera_page={{ emp_data.next_page_number }}">&raquo;</a></li>
+                                            {% else %}
+                                                <li class="disabled"><span>&raquo;</span></li>
+                                            {% endif %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <br>
+                            <div class="table-responsive">
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">Ages</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for c in emp_data %}
+                                        <tr style="cursor: pointer; border-top: 1px solid;">
+                                            <td class="expand-button" class="accordion-toggle collapsed" id="accordion{{ forloop.counter }}" data-toggle="collapse" data-parent="#accordion{{ forloop.counter }}" href="#collapse{{ forloop.counter }}">{{ forloop.counter }}</td>
+                                            <td class="accordion-toggle collapsed" id="accordion{{ forloop.counter }}" data-toggle="collapse" data-parent="#accordion{{ forloop.counter }}" href="#collapse{{ forloop.counter }}">{{c.id}}</td>
+                                            <td class="accordion-toggle collapsed" id="accordion{{ forloop.counter }}" data-toggle="collapse" data-parent="#accordion{{ forloop.counter }}" href="#collapse{{ forloop.counter }}">{{c.name}}</td>
+                                            <td class="accordion-toggle collapsed" id="accordion{{ forloop.counter }}" data-toggle="collapse" data-parent="#accordion{{ forloop.counter }}" href="#collapse{{ forloop.counter }}">{{c.address}}</td>
+                                            <td class="accordion-toggle collapsed" id="accordion{{ forloop.counter }}" data-toggle="collapse" data-parent="#accordion{{ forloop.counter }}" href="#collapse{{ forloop.counter }}">{{c.age}}</td>
+
+                                            {% if c.is_active == True %}
+                                                <td><a class="btn btn-light btn-sm" href="#" style="font-size: 14px; color: green;"> Active </a></td>
+                                            {% else %}
+                                                <td><a class="btn btn-light btn-sm" href="#" style="font-size: 14px; color: red;"> Deactive </a></td>
+                                            {% endif %}
+                                            <!-- <td><a class="dropdown-item" data-toggle="modal" data-target="#exampleModal4" data-key="{# {{c.id}} #}" onclick="EditCamera({# {{c.id}} #})" style="font-size: 14px;"> </a></td> -->
+                                            <td><a type="button" class="btn btn-light btn-sm" onclick="EditEMP({{c.id}})" >
+                                                <i class="icon-pencil"></i>
+                                            </a> </td>
+                                        </tr>
+
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main><!--main contents end-->
+</div>
+
+<script>
+
+// clear search text function
+$(".clearable").each(function() {
+
+  var $inp = $(this).find("input:text"),
+      $cle = $(this).find(".clearable__clear");
+
+  $inp.on("input", function(){
+    $cle.toggle(!!this.value);
+  });
+
+  $cle.on("touchstart click", function(e) {
+    e.preventDefault();
+    $inp.val("").trigger("input");
+  });
+
+});
+
+// search active emp
+function SearchEmployee(txt){
+    var data_val = txt.value;
+    $("#search_emp").attr("href", "?emp_search="+data_val)
+}
+
+</script>
+<script>
+      $(document).on('click', '.panel-heading span.clickable', function(e){
+    var $this = $(this);
+	if(!$this.hasClass('panel-collapsed')) {
+		$this.parents('.panel').find('.panel-body').slideUp();
+		$this.addClass('panel-collapsed');
+		$this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+
+	} else {
+		$this.parents('.panel').find('.panel-body').slideDown();
+		$this.removeClass('panel-collapsed');
+		$this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+
+	}
+})
+  </script>
+{% include 'staff/emp_creation.html' %}
+{% endblock %}

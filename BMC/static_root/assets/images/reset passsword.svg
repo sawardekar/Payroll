@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <clipPath id="clip-reset_passsword">
+      <rect width="128" height="128"/>
+    </clipPath>
+  </defs>
+  <g id="reset_passsword" data-name="reset passsword" clip-path="url(#clip-reset_passsword)">
+    <g id="Group_510" data-name="Group 510" transform="translate(15.741 0.32)">
+      <g id="Group_459" data-name="Group 459">
+        <path id="Path_681" data-name="Path 681" d="M217.687,296.53l-1.678,15.09a2.66,2.66,0,0,0,2.644,2.954h10.64a2.66,2.66,0,0,0,2.644-2.954l-1.678-15.09a10.524,10.524,0,0,0,4.354-8.557,10.64,10.64,0,0,0-21.28,0A10.524,10.524,0,0,0,217.687,296.53Zm6.286-13.877a5.3,5.3,0,0,1,2.3,10.089,2.662,2.662,0,0,0-1.486,2.689l1.538,13.822h-4.7l1.538-13.822a2.662,2.662,0,0,0-1.486-2.689,5.3,5.3,0,0,1,2.3-10.089Z" transform="translate(-176.093 -208.173)" stroke="#fff" stroke-width="0.2"/>
+        <path id="Path_682" data-name="Path 682" d="M157.1,47.88h-7.98V37.24a37.24,37.24,0,0,0-74.48,0V47.88H66.66A2.659,2.659,0,0,0,64,50.54v66.5a10.65,10.65,0,0,0,10.64,10.64h74.48a10.65,10.65,0,0,0,10.64-10.64V50.54A2.659,2.659,0,0,0,157.1,47.88ZM79.96,37.24a31.92,31.92,0,1,1,63.84,0V47.88h-5.32V37.24a26.6,26.6,0,1,0-53.2,0V47.88H79.96Zm53.2,0V47.88H90.6V37.24a21.28,21.28,0,0,1,42.56,0Zm21.28,79.8a5.327,5.327,0,0,1-5.32,5.32H74.64a5.327,5.327,0,0,1-5.32-5.32V53.2h85.12Z" transform="translate(-64)" stroke="#fff" stroke-width="0.2"/>
+      </g>
+    </g>
+  </g>
+</svg>
