@@ -83,10 +83,10 @@
           <div class="container_header">
             <div class="right_detail">
               <div class="row d-flex min-h pos-md-r">
-                <div class="col-xl-1 col-2 d-flex justify-content-end">
+                <div class="col-12">
                   <div class="right_bar_top d-flex align-items-center">
 
-                    <div class="dropdown dropdown-user">
+                    <div class="dropdown dropdown-user" style="float: right;position: absolute;right: 63px;top: 4px;">
                       <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true"> <img class="img-circle pro_pic" src="{{imageInfo}}{{demo_customer.company_logo}}" onerror="this.onerror=null;this.src='https://image.shutterstock.com/image-vector/male-silhouette-avatar-profile-picture-260nw-199246382.jpg';" alt=""> </a>
                       <ul class="dropdown-menu dropdown-menu-default">
                         
@@ -111,8 +111,10 @@
                     <!-- Dropdown_User_End -->
                   </div>
                 </div>
+                  <div id="google_translate_element" style="float: left;position: absolute;left: 10px;top: 18px;"></div>
               </div>
             </div>
+
           </div>
         </header>
       </div>
@@ -135,7 +137,13 @@
       <script src="{% static 'assets/js/index/utils.js'%}"></script>
       <script src="{% static 'assets/js/jquery.dcjqaccordion.2.7.js'%}"></script>
       <script src="{% static 'assets/js/custom.js'%}"></script>
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+    }
+    </script>
 
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
       <script>
         function showWorkLoader(){
           $("#loading_div").show();
